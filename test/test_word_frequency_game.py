@@ -11,6 +11,10 @@ class TestWordFrequencyGame(unittest.TestCase):
         word_frequency = src.word_frequency.word_freq_game.count_word_frequency('the is')
         self.assertEqual(word_frequency, 'the 1 \nis 1')
 
+    def test_should_return_1_the_when_count_word_frequency_given_the(self):
+        word_frequency = src.word_frequency.word_freq_game.count_word_frequency('the')
+        self.assertEqual(word_frequency, 'the 1')
+
     def test_should_return_empty_when_count_word_frequency_given_empty(self):
         word_frequency = src.word_frequency.word_freq_game.count_word_frequency('')
         self.assertEqual(word_frequency, '')
