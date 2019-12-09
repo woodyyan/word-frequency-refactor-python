@@ -2,13 +2,13 @@ from src.word_frequency.input import Input
 
 
 def count_word_frequency(paragraph: str) -> str:
-    word_list = paragraph.split()
+    words = paragraph.split()
 
-    if len(word_list) == 1:
-        return word_list[0] + " 1"
+    if len(words) == 1:
+        return words[0] + " 1"
     else:
         input_list = []
-        for word in word_list:
+        for word in words:
             input_list.append(Input(word, 1))
 
         word_dict = {}
@@ -29,6 +29,7 @@ def count_word_frequency(paragraph: str) -> str:
         for item in sorted_list:
             result += f'{item.value} {item.count} \n'
         return result.strip()
+
 
 if __name__ == '__main__':
     paragraph = "the the is"
