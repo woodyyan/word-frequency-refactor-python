@@ -1,4 +1,4 @@
 class Input:
-    def __init__(self, value, count):
-        self.value = value
+    def __init__(self, word, count):
+        self.word = word
         self.count = count

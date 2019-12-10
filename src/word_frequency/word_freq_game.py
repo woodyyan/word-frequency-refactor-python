@@ -23,7 +23,7 @@ def count_words(words):
 
 
 def render_word_frequency(sorted_words):
-    return '\n'.join(map(lambda w: f'{w.value} {w.count} ', sorted_words)).strip()
+    return '\n'.join(map(lambda w: f'{w.word} {w.count} ', sorted_words)).strip()
 
 
 if __name__ == '__main__':
