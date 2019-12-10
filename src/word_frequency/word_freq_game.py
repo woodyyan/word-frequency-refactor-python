@@ -10,16 +10,8 @@ def count_word_frequency(paragraph: str) -> str:
 
 
 def count_words(words):
-    word_dict = {}
-    for word in words:
-        if word in word_dict:
-            word_dict[word] += 1
-        else:
-            word_dict[word] = 1
-    sorted_inputs = []
-    for word, count in word_dict.items():
-        sorted_inputs.append(Input(word, count))
-    return sorted(sorted_inputs, key=lambda w: w.count, reverse=True)
+    inputs = map(lambda w: Input(w, words.count(w)), set(words))
+    return sorted(inputs, key=lambda w: w.count, reverse=True)
 
 
 def render_word_frequency(sorted_inputs):
