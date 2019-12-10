@@ -4,9 +4,9 @@ from src.word_frequency.input import Input
 def count_word_frequency(paragraph: str) -> str:
     words = paragraph.split()
 
-    sorted_words = count_words(words)
+    sorted_inputs = count_words(words)
 
-    return render_word_frequency(sorted_words)
+    return render_word_frequency(sorted_inputs)
 
 
 def count_words(words):
@@ -16,14 +16,14 @@ def count_words(words):
             word_dict[word] += 1
         else:
             word_dict[word] = 1
-    sorted_words = []
+    sorted_inputs = []
     for word, count in word_dict.items():
-        sorted_words.append(Input(word, count))
-    return sorted(sorted_words, key=lambda w: w.count, reverse=True)
+        sorted_inputs.append(Input(word, count))
+    return sorted(sorted_inputs, key=lambda w: w.count, reverse=True)
 
 
-def render_word_frequency(sorted_words):
-    return '\n'.join(map(lambda w: f'{w.word} {w.count} ', sorted_words)).strip()
+def render_word_frequency(sorted_inputs):
+    return '\n'.join(map(lambda s: f'{s.word} {s.count} ', sorted_inputs)).strip()
 
 
 if __name__ == '__main__':
