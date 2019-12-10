@@ -4,34 +4,26 @@ from src.word_frequency.input import Input
 def count_word_frequency(paragraph: str) -> str:
     words = paragraph.split()
 
-    sorted_list = count_words(words)
+    sorted_words = count_words(words)
 
-    return render_word_frequency(sorted_list)
+    return render_word_frequency(sorted_words)
 
 
 def count_words(words):
-    input_list = []
-    for word in words:
-        input_list.append(Input(word, 1))
     word_dict = {}
-    for input_item in input_list:
-        if input_item.value in word_dict:
-            word_dict[input_item.value].append(input)
+    for word in words:
+        if word in word_dict:
+            word_dict[word] += 1
         else:
-            word_dict[input_item.value] = [input]
-    new_list = []
-    for word, value in word_dict.items():
-        count = len(word_dict[word])
-        new_list.append(Input(word, count))
-    sorted_list = sorted(new_list, key=lambda x: x.count, reverse=True)
-    return sorted_list
+            word_dict[word] = 1
+    sorted_words = []
+    for word, count in word_dict.items():
+        sorted_words.append(Input(word, count))
+    return sorted(sorted_words, key=lambda w: w.count, reverse=True)
 
 
-def render_word_frequency(sorted_list):
-    result = ''
-    for item in sorted_list:
-        result += f'{item.value} {item.count} \n'
-    return result.strip()
+def render_word_frequency(sorted_words):
+    return '\n'.join(map(lambda w: f'{w.value} {w.count} ', sorted_words)).strip()
 
 
 if __name__ == '__main__':
