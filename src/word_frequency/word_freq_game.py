@@ -3,9 +3,7 @@ from src.word_frequency.input import Input
 
 def count_word_frequency(paragraph: str) -> str:
     words = paragraph.split()
-
     sorted_inputs = count_words(words)
-
     return render_word_frequency(sorted_inputs)
 
 
